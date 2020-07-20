@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Restaurant.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Restaurant.Api.Controllers.RestaurantController">
+            <summary>
+            Restaurant api
+            </summary>
+        </member>
+        <member name="M:Restaurant.Api.Controllers.RestaurantController.#ctor(Microsoft.Extensions.Logging.ILogger{Restaurant.Api.Controllers.RestaurantController},Restaurant.Api.Services.IRestaurantService)">
+            <summary>
+            ctor
+            </summary>
+            <param name="logger">logger</param>
+            <param name="restaurantService">restaurantService</param>
+        </member>
+        <member name="M:Restaurant.Api.Controllers.RestaurantController.Lookup(System.Guid)">
+            <summary>
+            Lookup groups table
+            </summary>
+            <param name="groupId">Group id</param>
+            <returns>Retruns table</returns>
+        </member>
+        <member name="M:Restaurant.Api.Controllers.RestaurantController.Arrive(Restaurant.Api.ViewModels.GroupViewModel)">
+            <summary>
+            New client arrives
+            </summary>
+            <param name="model">Client group size</param>
+            <returns>Return new registered group</returns>
+        </member>
+        <member name="M:Restaurant.Api.Controllers.RestaurantController.Leave(System.Guid)">
+            <summary>
+            Leave group queue
+            </summary>
+            <param name="id">Group id</param>
+            <returns>Returns group</returns>
+        </member>
+        <member name="T:Restaurant.Api.Models.Table">
+            <summary>
+            Table model
+            </summary>
+        </member>
+        <member name="P:Restaurant.Api.Models.Table.FreeSize">
+            <summary>
+            Returns tables free places
+            </summary>
+        </member>
+        <member name="P:Restaurant.Api.Models.Table.IsEmpty">
+            <summary>
+            Returns flat that table is empty
+            </summary>
+        </member>
+        <member name="M:Restaurant.Api.Models.Table.PlaceClients(Restaurant.Api.Models.ClientsGroup)">
+            <summary>
+            Place clients group
+            </summary>
+            <param name="group">Group or one person</param>
+        </member>
+        <member name="M:Restaurant.Api.Models.Table.ClientsFreePlace(Restaurant.Api.Models.ClientsGroup)">
+            <summary>
+            Clients group free places
+            </summary>
+            <param name="group">Group or one person</param>
+        </member>
+        <member name="M:Restaurant.Api.Models.Table.GetGroup(System.Guid)">
+            <summary>
+            Get group by Id
+            </summary>
+            <param name="id">Group id</param>
+            <returns>Returns group by Id</returns>
+        </member>
+        <member name="T:Restaurant.Api.Services.Configuration.AppSettingsConfigTableFactory">
+            <summary>
+            Table factory creates tables from appsettings.json
+            </summary>
+        </member>
+        <member name="M:Restaurant.Api.Services.Configuration.AppSettingsConfigTableFactory.CreateTables">
+            <summary>
+            Create tables list
+            </summary>
+            <returns>Tables list</returns>
+        </member>
+        <member name="T:Restaurant.Api.Services.Configuration.ITableFactory">
+            <summary>
+            Interface table factory
+            </summary>
+        </member>
+        <member name="M:Restaurant.Api.Services.Configuration.ITableFactory.CreateTables">
+            <summary>
+            Create tables list
+            </summary>
+            <returns>Tables list</returns>
+        </member>
+        <member name="T:Restaurant.Api.Services.Configuration.ITablesBuilder">
+            <summary>
+            Interface table builder
+            </summary>
+        </member>
+        <member name="M:Restaurant.Api.Services.Configuration.ITablesBuilder.Add(System.Int32)">
+            <summary>
+            Add one table by size
+            </summary>
+            <param name="tableSize">Table size</param>
+            <returns>Returns self</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.Configuration.ITablesBuilder.Add(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Adds multiple tables by sizes
+            </summary>
+            <param name="tableSizes">Tables sizes</param>
+            <returns>Returns self</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.Configuration.ITablesBuilder.Build">
+            <summary>
+            Build tables list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Restaurant.Api.Services.Configuration.TablesBuilder">
+            <summary>
+            Simple table builder
+            </summary>
+        </member>
+        <member name="M:Restaurant.Api.Services.Configuration.TablesBuilder.#ctor">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:Restaurant.Api.Services.Configuration.TablesBuilder.Add(System.Int32)">
+            <summary>
+            Add one table by size
+            </summary>
+            <param name="tableSize">Table size</param>
+            <returns>Returns self</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.Configuration.TablesBuilder.Add(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Adds multiple tables by sizes
+            </summary>
+            <param name="tableSizes">Tables sizes</param>
+            <returns>Returns self</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.Configuration.TablesBuilder.Build">
+            <summary>
+            Build tables list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.IRestaurantService.Arrive(System.Int32)">
+            <summary>
+            New client arrives
+            </summary>
+            <param name="groupSize">Group size</param>
+            <returns>Returns new registered group</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.IRestaurantService.Leave(System.Guid)">
+            <summary>
+            Group leaves queue
+            </summary>
+            <param name="id">Group id</param>
+            <returns>Returns leaved group</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.IRestaurantService.Lookup(System.Guid)">
+            <summary>
+            Lookup group in restaurant and return table
+            </summary>
+            <param name="groupId">Group id</param>
+            <returns>Returns Table</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.IRestaurantService.CheckLongWaitingQueueClients">
+            <summary>
+            Check long waiting clients queue
+            </summary>
+        </member>
+        <member name="T:Restaurant.Api.Services.IWaitingClientsQueueService">
+            <summary>
+            Interface wainting clients queue service
+            </summary>
+        </member>
+        <member name="M:Restaurant.Api.Services.IWaitingClientsQueueService.Add(Restaurant.Api.Models.ClientsGroup)">
+            <summary>
+            Add to queue clients group
+            </summary>
+            <param name="group">One group or one person</param>
+        </member>
+        <member name="M:Restaurant.Api.Services.IWaitingClientsQueueService.Remove(Restaurant.Api.Models.ClientsGroup)">
+            <summary>
+            Removes from queue group
+            </summary>
+            <param name="group">One group or one person</param>
+        </member>
+        <member name="T:Restaurant.Api.Services.RestaurantService">
+            <summary>
+            Restaurant service
+            </summary>
+        </member>
+        <member name="M:Restaurant.Api.Services.RestaurantService.#ctor(Restaurant.Api.Services.IWaitingClientsQueueService,Restaurant.Api.Services.Configuration.ITableFactory)">
+            <summary>
+            ctor
+            </summary>
+            <param name="tablesBuilder"></param>
+        </member>
+        <member name="M:Restaurant.Api.Services.RestaurantService.Arrive(System.Int32)">
+            <summary>
+            New client arrives
+            </summary>
+            <param name="groupSize">Group size</param>
+            <returns>Returns new registered group</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.RestaurantService.Leave(System.Guid)">
+            <summary>
+            Group leaves queue
+            </summary>
+            <param name="id">Group id</param>
+            <returns>Returns leaved group</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.RestaurantService.Lookup(System.Guid)">
+            <summary>
+            Lookup group in restaurant and return table
+            </summary>
+            <param name="groupId">Group id</param>
+            <returns>Returns Table</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.RestaurantService.CheckLongWaitingQueueClients">
+            <summary>
+            Check long waiting clients queue
+            </summary>
+        </member>
+        <member name="T:Restaurant.Api.Services.RestManager">
+            <summary>
+            Restaurant manger
+            </summary>
+        </member>
+        <member name="M:Restaurant.Api.Services.RestManager.#ctor(System.Collections.Generic.List{Restaurant.Api.Models.Table},Restaurant.Api.Services.IWaitingClientsQueueService)">
+            <summary>
+            ctor
+            </summary>
+            <param name="tables">Init tables</param>
+        </member>
+        <member name="M:Restaurant.Api.Services.RestManager.OnArrive(Restaurant.Api.Models.ClientsGroup)">
+            <summary>
+            new client(s) show up
+            </summary>
+            <param name="group">New clients group or one person</param>
+        </member>
+        <member name="M:Restaurant.Api.Services.RestManager.OnLeave(Restaurant.Api.Models.ClientsGroup)">
+            <summary>
+            client(s) leave, either served or simply abandoning the queue
+            </summary>
+            <param name="group">Waiting clients group or one person</param>
+        </member>
+        <member name="M:Restaurant.Api.Services.RestManager.Lookup(Restaurant.Api.Models.ClientsGroup)">
+            <summary>
+            Get table where a given client group is seated,
+            or null if it is still queuing or has already left
+            </summary>
+            <param name="group">Finding group</param>
+            <returns>Returns table</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.RestManager.GetGroup(System.Guid)">
+            <summary>
+            Get clients group by id
+            </summary>
+            <param name="id">Group id</param>
+            <returns>Returns clients group by id</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.RestManager.GetTableWithFreeSeats(System.Int32)">
+            <summary>
+            Get Table with free seats
+            </summary>
+            <param name="size">Table size to find</param>
+            <returns>Returns table</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.RestManager.WorkClientsQueue">
+            <summary>
+            Work clients in queue
+            </summary>
+        </member>
+        <member name="T:Restaurant.Api.Services.WaitingClientsQueueService">
+            <summary>
+            Service queue waiting clients 
+            </summary>
+        </member>
+        <member name="M:Restaurant.Api.Services.WaitingClientsQueueService.Add(Restaurant.Api.Models.ClientsGroup)">
+            <summary>
+            Add to queue clients group
+            </summary>
+            <param name="group">One group or one person</param>
+        </member>
+        <member name="M:Restaurant.Api.Services.WaitingClientsQueueService.Remove(Restaurant.Api.Models.ClientsGroup)">
+            <summary>
+            Removes from queue group
+            </summary>
+            <param name="group">One group or one person</param>
+        </member>
+        <member name="M:Restaurant.Api.Services.WaitingClientsQueueService.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>Returns an enumerator that iterates through the collection.</returns>
+        </member>
+        <member name="M:Restaurant.Api.Services.WaitingClientsQueueService.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>Returns an enumerator that iterates through the collection.</returns>
+        </member>
+    </members>
+</doc>
